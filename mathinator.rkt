@@ -1,8 +1,18 @@
 #lang racket
-; Ryan Turner <github@ryanjturner.com>
+; Ryan Turner <git at ryanjturner.com>
 ; Created: July 6, 2012
 ;
 ; A simple program to generate arithmetic problems.
+
+(define (start-timer function)
+  (run-timer function (current-seconds)))
+  
+(define (run-timer function start-time)
+  (function)
+  (display " (")
+  (display (- (current-seconds) start-time))
+  (display ")")
+  (newline))
 
 (define
   (randint maxdigits)
@@ -25,12 +35,12 @@
       (question
         (randint 2)
         (randint 2))
-      (printf "Correct!~n")
-      (printf "Wrong~n")))
+      (printf "Correct!")
+      (printf "Wrong")))
 
 (define
   (maketest)
-    (makequestion)
+    (start-timer (lambda () (makequestion)))
     (maketest))
 
 (maketest)
