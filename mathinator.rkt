@@ -20,7 +20,7 @@
       (* (random) (expt 10 maxdigits))))
 
 (define
-  (question arg1 arg2)
+  (addquestion arg1 arg2)
     (printf "~a + ~a = " arg1 arg2)
     (if
       (=
@@ -30,9 +30,29 @@
       #f))
 
 (define
+  (subquestion arg1 arg2)
+    (printf "~a - ~a = " arg1 arg2)
+    (if
+      (=
+        (- arg1 arg2)
+        (read))
+      #t
+      #f))
+
+(define
+  (mulquestion arg1 arg2)
+    (printf "~a * ~a = " arg1 arg2)
+    (if
+      (=
+        (* arg1 arg2)
+        (read))
+      #t
+      #f))
+
+(define
   (makequestion)
     (if
-      (question
+      (addquestion
         (randint 2)
         (randint 2))
       (printf "Correct!")
