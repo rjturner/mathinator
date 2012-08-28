@@ -59,9 +59,11 @@
       (printf "Wrong")))
 
 (define
-  (maketest)
+  (maketest reps)
     (start-timer (lambda () (makequestion)))
-    (maketest))
+    (if (positive? reps)
+        (maketest (- reps 1))
+        (display "Parabéns, fizeste um set completo!")))
 
-(maketest)
+(maketest 50)
 
