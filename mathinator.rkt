@@ -50,6 +50,16 @@
       #f))
 
 (define
+  (divquestion arg1 arg2)
+    (let ([arg0 (* arg1 arg2)])
+    (printf "~a / ~a = " arg0 arg1)
+    (if
+      (= arg2
+        (read))
+      #t
+      #f)))
+
+(define
   (makequestion)
     (if
       (addquestion
