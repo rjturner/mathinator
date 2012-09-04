@@ -16,8 +16,8 @@
 
 (define
   (randint maxdigits)
-    (floor
-      (* (random) (expt 10 maxdigits))))
+    (inexact->exact (floor
+      (* (random) (expt 10 maxdigits)))))
 
 (define
   (addquestion arg1 arg2)
