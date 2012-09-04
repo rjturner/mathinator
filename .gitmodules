@@ -1,0 +1,3 @@
+[submodule "Scheme-Infix-Calculator"]
+	path = Scheme-Infix-Calculator
+	url = https://github.com/osoleve/Scheme-Infix-Calculator.git
