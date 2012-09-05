@@ -15,9 +15,34 @@
   (newline))
 
 (define
+  (randnatural maxdigits)
+    (+ 1 (random (- (expt 10 maxdigits) 1))))
+
+(define
+  (randpos maxdigits)
+    (randnatural maxdigits))
+
+(define
+  (randwhole maxdigits)
+    (random (expt 10 maxdigits)))
+
+(define
+  (randnonneg maxdigits)
+    (randwhole maxdigits))
+
+(define
+  (randneg maxdigits)
+    (- (randpos maxdigits)))
+
+(define
+  (randnonpos maxdigits)
+    (- (randwhole maxdigits)))
+
+(define
   (randint maxdigits)
-    (inexact->exact (floor
-      (* (random) (expt 10 maxdigits)))))
+    (let ([max (expt 10 maxdigits)])
+    (- (random (- (* 2 max) 1)) (- max 1))))
+
 
 (define
   (addquestion arg1 arg2)
@@ -63,8 +88,8 @@
   (makequestion)
     (if
       (addquestion
-        (randint 2)
-        (randint 2))
+        (randwhole 1)
+        (randwhole 1))
       (printf "Correct!")
       (printf "Wrong")))
 
