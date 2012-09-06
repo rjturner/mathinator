@@ -14,6 +14,13 @@
   (display ")")
   (newline))
 
+(define (%readnum char)
+  (cond ((not (number? char)) (printf "Tecla um número\n") (%readnum (read)))
+        (char))) 
+
+(define (readnum)
+  (%readnum (read)))
+
 (define (randnatural maxdigits)
   (+ 1 (random (- (expt 10 maxdigits) 1))))
 
@@ -69,11 +76,6 @@
     (maketest (- reps 1))
     (display "Parabéns, fizeste um set completo!")))
 (maketest 50)
-(define (%readnum char)
-  (cond ((not (number? char)) (printf "Tecla um número\n") (%readnum (read)))
-        (char))) 
 
-(define (readnum)
-  (%readnum (read)))
 
 
