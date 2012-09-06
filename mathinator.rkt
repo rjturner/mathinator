@@ -39,24 +39,24 @@
 
 (define (addquestion arg1 arg2)
   (printf "~a + ~a = " arg1 arg2)
-  (if (= (+ arg1 arg2) (read)) #t #f))
+  (if (= (+ arg1 arg2) (readnum)) #t #f))
 
 (define (subquestion arg1 arg2)
   (printf "~a - ~a = " arg1 arg2)
-  (if (= (- arg1 arg2) (read)) #t #f))
+  (if (= (- arg1 arg2) (readnum)) #t #f))
 
 (define (mulquestion arg1 arg2)
   (printf "~a * ~a = " arg1 arg2)
-  (if (= (* arg1 arg2) (read)) #t #f))
+  (if (= (* arg1 arg2) (readnum)) #t #f))
 
 (define (divquestion arg1 arg2)
   (let ([arg0 (* arg1 arg2)])
   (printf "~a / ~a = " arg0 arg1)
-  (if (= arg2 (read)) #t #f)))
+  (if (= arg2 (readnum)) #t #f)))
 
 (define (squarequestion arg1)
   (printf "~a ^ 2 = " arg1)
-  (if (= (* arg1 arg1) (read)) #t #f))
+  (if (= (* arg1 arg1) (readnum)) #t #f))
 
 (define (makequestion)
   (if (addquestion (randwhole 1) (randwhole 1))
@@ -69,4 +69,11 @@
     (maketest (- reps 1))
     (display "Parabéns, fizeste um set completo!")))
 (maketest 50)
+(define (%readnum char)
+  (cond ((not (number? char)) (printf "Tecla um número\n") (%readnum (read)))
+        (char))) 
+
+(define (readnum)
+  (%readnum (read)))
+
 
