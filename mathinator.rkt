@@ -44,29 +44,29 @@
   (- (random (- (* 2 max) 1)) (- max 1))))
 
 
-(define (addquestion arg1 arg2)
+(define (add arg1 arg2)
   (printf "~a + ~a = " arg1 arg2)
   (if (= (+ arg1 arg2) (readnum)) #t #f))
 
-(define (subquestion arg1 arg2)
+(define (sub arg1 arg2)
   (printf "~a - ~a = " arg1 arg2)
   (if (= (- arg1 arg2) (readnum)) #t #f))
 
-(define (mulquestion arg1 arg2)
+(define (mul arg1 arg2)
   (printf "~a * ~a = " arg1 arg2)
   (if (= (* arg1 arg2) (readnum)) #t #f))
 
-(define (divquestion arg1 arg2)
+(define (div arg1 arg2)
   (let ([arg0 (* arg1 arg2)])
   (printf "~a / ~a = " arg0 arg1)
   (if (= arg2 (readnum)) #t #f)))
 
-(define (squarequestion arg1)
+(define (sq arg1)
   (printf "~a ^ 2 = " arg1)
   (if (= (* arg1 arg1) (readnum)) #t #f))
 
 (define (makequestion)
-  (if (addquestion (randwhole 1) (randwhole 1))
+  (if (add (randwhole 1) (randwhole 1))
     (printf "Correct!")
     (printf "Wrong")))
 
