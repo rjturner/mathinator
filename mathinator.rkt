@@ -43,6 +43,13 @@
   (let ([max (expt 10 maxdigits)])
   (- (random (- (* 2 max) 1)) (- max 1))))
 
+(define (randnonzero maxdigits)
+  (if (<= (random) 0.5)
+      (randnatural maxdigits)
+      (- (randnatural maxdigits))))
+
+(define (randtenth maxdigits)
+  (/ (floor (* (random) (expt 10 maxdigits))) 10))
 
 (define (add arg1 arg2)
   (printf "~a + ~a = " arg1 arg2)
